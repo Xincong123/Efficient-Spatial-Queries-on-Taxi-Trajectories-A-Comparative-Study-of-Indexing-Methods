@@ -1,0 +1,2 @@
+# Efficient-Spatial-Queries-on-Taxi-Trajectories-A-Comparative-Study-of-Indexing-Methods
+This project evaluates spatial-temporal query efficiency on the Porto taxi dataset by testing three tasks, similar path search, nearby path retrieval and shortest route detection using sequential scan, R-tree and SP-GiST indexes. Results show task-based performance, guiding index selection for large-scale movement data like smart transport systems.
