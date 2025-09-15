@@ -13,7 +13,7 @@ This project evaluates spatial-temporal query efficiency on the Porto taxi datas
 - **Python 3.x**
 - Dependencies:geopandas  matplotlib  sqlalchemy
 - PostgreSQL 15+ with PostGIS 3.4+ enabled.
-- Required Python packages:
+- Install the following Python packages:
   ```bash
   pip install geopandas matplotlib sqlalchemy psycopg2
   ```
