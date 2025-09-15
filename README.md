@@ -6,22 +6,20 @@
 
 ## Project Overview
 This project evaluates spatial-temporal query efficiency on the Porto taxi dataset by testing three tasks, similar path search, nearby path retrieval and shortest route detection using sequential scan, R-tree and SP-GiST indexes. Results show task-based performance, guiding index selection for large-scale movement data like smart transport systems.
-  -**Trajectory Similarity Search** – finding paths most similar to a target.
-  -**Spatial Range Join** – retrieving trajectories within a given distance of a target.
-  -**Shortest Trajectory Detection** – identifying the shortest path between start and end points.
-The results demonstrate that different indexing methods excel for different tasks, providing practical guidance for smart transportation systems and large-scale movement data management.
-(Detailed experimental results and figures are provided in the project report.)
 
 ## Dataset
 
 ## Environment Requirements
-Dependencies:
-  geopandas
-  matplotlib
-  sqlalchemy
-Database:
-  PostgreSQL 15+
-  PostGIS 3.4+ enabled
+- **Python 3.x**
+- Dependencies:geopandas  matplotlib  sqlalchemy
+- PostgreSQL 15+ with PostGIS 3.4+ enabled.
+- Required Python packages:
+  ```bash
+  pip install geopandas matplotlib sqlalchemy psycopg2
+  ```
+  
+---
+
 
 # File Description
 plot_trajectories.py
