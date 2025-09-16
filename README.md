@@ -15,8 +15,6 @@ This project evaluates spatial-temporal query efficiency on the Porto taxi datas
 - **Format:** CSV
 - **Use Case:** Spatio-temporal analysis, map-matching, mobility behavior, trajectory clustering
 
----
-
 ## 🛠️Environment Requirements
 - **Python 3.x**
 - **Dependencies:** geopandas  matplotlib  sqlalchemy
@@ -26,7 +24,7 @@ This project evaluates spatial-temporal query efficiency on the Porto taxi datas
 ## ⏳Methodology
 
 ### 1️⃣Data Preprocessing (Raw CSV to Cleaned Table)
-1. Create a **temporary table** and import raw data:
+Create a **temporary table** and import raw data:
 ```sql
 CREATE TABLE taxi_trips_temp (
   trip_id TEXT,
@@ -41,7 +39,7 @@ CREATE TABLE taxi_trips_temp (
 );
 ```
 
-2. Import **CSV** into the temp table (adjust path as needed):
+Import **CSV** into the temp table (adjust path as needed):
 ```sql
 CREATE TABLE taxi_trips_temp (
   trip_id TEXT,
@@ -57,7 +55,7 @@ CREATE TABLE taxi_trips_temp (
 ```
 
 ### 2️⃣Create Main Table & Remove Duplicates
-1. Create main table with primary key
+Create main table with primary key
 ```sql
 CREATE TABLE taxi_trips (
     trip_id TEXT PRIMARY KEY,
@@ -72,7 +70,7 @@ CREATE TABLE taxi_trips (
 );
 ```
 
-2. **Insert data from temp table (skip duplicates):**
+Insert data from temp table (skip duplicates):
 ```sql
 INSERT INTO taxi_trips
 SELECT * FROM taxi_trips_temp ON CONFLICT (trip_id) DO NOTHING;
@@ -91,7 +89,7 @@ DELETE FROM taxi_trips WHERE polyline IS NULL OR polyline = '[]';
 ```
 
 ### 4️⃣Convert  `polyline` to PostGIS `LINESTRING`
-1. Enable PostGIS and add geometry column:
+Enable PostGIS and add geometry column:
 ```sql
 CREATE EXTENSION IF NOT EXISTS postgis;
 -- Remove existing column if needed
@@ -100,8 +98,7 @@ ALTER TABLE taxi_trips DROP COLUMN IF EXISTS trajectory_geom;
 ALTER TABLE taxi_trips ADD COLUMN trajectory_geom geometry(LineString, 4326);
 ```
 
-2. Batch update geometry (example with LIMIT 349299):
-
+Batch update geometry (example with LIMIT 349299):
 ```sql
 UPDATE taxi_trips
 SET trajectory_geom = ST_SetSRID(
@@ -114,7 +111,6 @@ WHERE ctid IN (
     LIMIT 349299
 );
 ```
-
 
 ### 5️⃣Remove Rows with Missing Data = True
 Backup and delete records:
@@ -151,8 +147,8 @@ FROM traj_with_points
 WHERE num_points >= 20 AND num_points < 50
 ORDER BY num_points ASC
 LIMIT 5;
-
 ```
+
 ### **Final Record Count**  
 | Stage                  | Record Count |  
 |------------------------|--------------|  
