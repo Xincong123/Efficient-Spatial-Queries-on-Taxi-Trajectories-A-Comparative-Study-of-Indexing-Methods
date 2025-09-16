@@ -1,4 +1,4 @@
-# INFS 7205 Efficient Spatial Queries on Taxi Trajectories🚗
+# 🚗INFS 7205 Efficient Spatial Queries on Taxi Trajectories
 
 **Author:** Xincong Ren  
 **Course:** INFS4205/7205 Advanced Techniques in High Dimensional Data, Semester 1, 2025
